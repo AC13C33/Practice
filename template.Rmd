@@ -2,7 +2,7 @@
 title: "Basic Plots"
 anthor: "Yishan"
 date: 2022-09-18
-output: html_document
+output: word_document
 ---
 
 ```{r setup, include=FALSE}
