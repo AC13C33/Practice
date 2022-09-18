@@ -1,21 +1,36 @@
 ---
-title: "Simple document"
+title: "Basic Plots"
+anthor: "Yishan"
+date: 2022-09-18
 output: html_document
 ---
 
-I'm an R Markdown document! 
-
-# Section 1
-
-Here's a **code chunk** that samples from 
-a _normal distribution_:
-
-```{r}
-samp = rnorm(100)
-length(samp)
+```{r setup, include=FALSE}
+library(tidyverse)
 ```
 
-# Section 2
+The purpose of this file is to present a coupld of basic plots using `ggplot`.
 
-I can take the mean of the sample, too!
-The mean is `r mean(samp)`.
+First we create a datafram containing variables for our plots.
+
+```{r df_create}
+set.seed(1234)
+
+plot_df = tibble(
+  x = rnorm(1000, sd = .5),
+  y = 1 + 2 * x + rnorm(1000)
+)
+```
+
+First we show a histogram of the `x` variable.
+
+```{r x_hist}
+ggplot(plot_df, aes(x = x)) + geom_histogram()
+```
+
+Next we show a scatter plot of `y` vs `x`.
+
+```{r yx_scatter}
+ggplot(plot_df, aes(x = x, y = y)) + geom_point()
+```
+
